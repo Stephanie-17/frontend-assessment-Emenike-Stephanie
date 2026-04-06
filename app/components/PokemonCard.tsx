@@ -7,7 +7,7 @@ import { useState } from "react";
 interface PokemanCardProps {
 	id: number;
 	name: string;
-	image: string;
+	image: string | null;
 	types: PokemonType[];
 	baseExperience: number;
 }
@@ -44,7 +44,7 @@ const PokemonCard = ({
 
 				<div className="w-full bg-white/10 p-3">
 					<p className="text-gray-400 text-xs mb-2">#{formattedId}</p>
-					<p className="font-bold  tracking-widest mb-3">{name}</p>
+					<p className="font-bold text-lg capitalize tracking-widest mb-3">{name}</p>
 					<div className="flex justify-between items-center">
 						<span
 							className={`px-4 py-1 rounded-full text-xs type-${primaryType} font-semibold uppercase`}
