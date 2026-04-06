@@ -1,4 +1,4 @@
-import { Pokemon, PokemonListResponse, PokemonTypeResponse } from "@/app/types";
+import { Pokemon, PokemonListResponse, PokemonTypeResponse } from "@/types";
 
 export const getPokemonList = async (page: number, limit: number): Promise<PokemonListResponse> => {
 	const offset = (page - 1) * limit;

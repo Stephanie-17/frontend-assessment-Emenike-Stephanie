@@ -1,20 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-    --foreground: #ededed;
+	--background: #000;
+	--foreground: #ededed;
+  --primary: #171313;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter-sans);
- 
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-inter-sans);
+  --color-primary: var(--primary);
 }
 
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.type-fire {
+	background: #f5c4b3;
+	color: #712b13;
+}
+.type-water {
+	background: #b5d4f4;
+	color: #0c447c;
+}
+.type-grass {
+	background: #c0dd97;
+	color: #27500a;
+}
+.type-normal {
+	background: #d3d1c7;
+	color: #2c2c2a;
+}
+.type-electric {
+	background: #fac775;
+	color: #633806;
+}
+.type-psychic {
+	background: #f4c0d1;
+	color: #72243e;
+}
+.type-ghost {
+	background: #afa9ec;
+	color: #26215c;
+}
+.type-poison {
+	background: #ed93b1;
+	color: #4b1528;
+}
+.type-dragon {
+	background: #afa9ec;
+	color: #26215c;
+}
+.type-ice {
+	background: #b5d4f4;
+	color: #0c447c;
+}
+.type-fighting {
+	background: #f0997b;
+	color: #4a1b0c;
+}
+.type-rock {
+	background: #d3d1c7;
+	color: #2c2c2a;
+}
+.type-ground {
+	background: #fac775;
+	color: #633806;
+}
+.type-bug {
+	background: #c0dd97;
+	color: #27500a;
+}
+.type-steel {
+	background: #d3d1c7;
+	color: #2c2c2a;
+}
+.type-dark {
+	background: #888780;
+	color: #f1efe8;
 }
