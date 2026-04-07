@@ -4,6 +4,7 @@ import { Pokemon } from "@/types";
 import Pagination from "./components/Pagination";
 import SearchBar from "./components/SearchBar";
 import TypeFilter from "./components/TypeFilter";
+import EmptyState from "./components/EmptyState";
 
 interface HomeProp {
   searchParams: Promise<{page?: string, search?: string, type?: string}>
@@ -34,12 +35,7 @@ export default async function Home({searchParams,}:HomeProp) {
    
     
     {filteredPokemon.length === 0 ? (
-  <div className="flex flex-col items-center justify-center py-20 text-center">
-    <p className="text-lg font-medium text-gray-700">No Pokémon found</p>
-    <p className="text-sm text-gray-400 mt-1">
-      Try a different name or clear your search
-    </p>
-  </div>
+  <EmptyState />
 ) : (
   <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
     {filteredPokemon.map((p: Pokemon) => (
