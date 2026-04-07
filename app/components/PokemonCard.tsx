@@ -10,6 +10,7 @@ interface PokemanCardProps {
 	image: string | null;
 	types: PokemonType[];
 	baseExperience: number;
+	priority?: boolean
 }
 const PokemonCard = ({
 	id,
@@ -17,6 +18,7 @@ const PokemonCard = ({
 	image,
 	types,
 	baseExperience,
+	priority
 }: PokemanCardProps) => {
 	const [imgError, setImgError] = useState(false);
 
@@ -32,12 +34,14 @@ const PokemonCard = ({
 						</div>
 					) : (
 						<Image
+						 
 							className="w-full rounded-xl object-contain"
 							src={image}
 							alt={name}
 							width={100}
 							height={100}
 							onError={() => setImgError(true)}
+							priority={priority}
 						/>
 					)}
 				</div>
