@@ -28,10 +28,11 @@ const SearchBar =  () => {
 	
 	return (
 		<input
+     className="w-1/2 border-white/50 p-2 mb-9 border-2 rounded-xl"
 			value={value}
 			onChange={(e) => setValue(e.target.value)}
 			type="search"
-			placeholder="Search for Pokémons..."
+			placeholder="Search for Pokémons on this page..."
 		/>
 	);
 };
