@@ -23,6 +23,10 @@ would have made URL state harder to manage. Also, it makes it easier for the use
 - next/font for the font — loads the font at build time instead of
   runtime, prevents a flash of unstyled text
 
+ ### Lighhouse scores
+  I tried lighthouse on my project and using the live link on mobile, I got a 64 for performance and 90+ for other sections, but on desktop, I got a 90 for performance and 90+ for other sections.
+  However, I decided to try it out on incognito mode, using the live link i got 99 for performance and 90+ for other sections and for desktop I got a 100 for SEO, Best practices and Performance and a 90 for Accessibility. 
+
 ## Architecture Decisions
 - All fetch calls live in lib/api.ts — components never call fetch
   directly. This makes it easy to swap the API later and keeps
