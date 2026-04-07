@@ -1,8 +1,52 @@
-## Setup
-1. Clone the repo: git clone `frontend-assessment-Emenike-Stephanie`
-2. Install: `npm install`
-3. Get PokeAPI (no API key needed)
-4. Run: npm run dev
+# PokéArchive
+
+A high-performance Pokémon browsing experience built with Next.js, TypeScript, and Tailwind CSS. Explore the complete Pokédex with smooth pagination, smart search, and optimized image loading.
+
+
+
+## ✨ Features
+
+- **Complete Pokédex** – Browse through 1,300+ Pokémon with official artwork
+- **Smart Pagination** – URL-stateful pagination that you can share (e.g., `?page=3`)
+- **Instant Search** – Filter Pokémon by name on the current page
+- **Responsive Design** – Works beautifully on desktop, tablet, and mobile
+- **Optimized Images** – Automatic lazy loading, priority hints, and CLS prevention
+- **Detailed Views** – Click any Pokémon to see abilities, types, stats, and more
+
+## 🚀 Live Demo
+
+[**View PokéArchive Live**](https://frontend-assessment-emenike-stephan-nine.vercel.app/?page=1)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **API**: [PokéAPI](https://pokeapi.co/) (free, no API key required)
+- **Testing**: Jest + React Testing Library
+- **Deployment**: Vercel
+
+## 📦 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Stephanie-17/frontend-assessment-Emenike-Stephanie.git
+cd frontend-assessment-Emenike-Stephanie
+```
+### 2. Install dependencies
+```
+npm install
+```
+
+### 3. Run the development server
+
+```
+npm run dev
+```
+
+### 4. Open http://localhost:3000 to see the app
+
 
 ## API Choice
 I used PokéAPI because it's free, requires no API key, and has clean
