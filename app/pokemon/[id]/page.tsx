@@ -1,5 +1,3 @@
-
-
 export async function generateMetadata({ params }: { params: { id: string } }) {
 	try {
 		const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
@@ -21,11 +19,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 	}
 }
 
-import BreadcrumbNav from "@/app/components/BreadcrumbNav";
+import BreadcrumbNav from "@/features/BreadcrumbNav";
 import { getPokemonDetails } from "@/lib/api";
 import React from "react";
 import { Pokemon } from "@/types";
-import PokemonDetailsImg from "@/app/components/PokemonDetailsImg";
+import PokemonDetailsImg from "@/components/PokemonDetailsImg";
 
 interface PokemonDetailsProps {
 	params: Promise<{ id: string }>;
@@ -45,8 +43,7 @@ const PokemonDetails = async ({ params }: PokemonDetailsProps) => {
 
 				<div className="mt-9 flex flex-col items-center w-full">
 					<div className="w-full max-w-4xl bg-gray-900 border-white/50 border-2 rounded-xl flex flex-col md:flex-row items-center gap-10 p-5">
-          <PokemonDetailsImg image={image} name={pokemon.name} />
-						
+						<PokemonDetailsImg image={image} name={pokemon.name} />
 
 						<div className="flex flex-col items-center md:items-start">
 							<p className="text-white/50 text-sm">#{formattedId}</p>
@@ -81,37 +78,40 @@ const PokemonDetails = async ({ params }: PokemonDetailsProps) => {
 							</p>
 							<p className="font-bold text-xl">{pokemon.base_experience}</p>
 						</div>
-					
 					</div>
 
-          <div className="w-full max-w-4xl  p-5 bg-gray-900 rounded-xl mt-7 ">
-            <h3 className="font-semibold text-2xl">Abilities</h3>
-            <div className="flex flex-col items-center gap-5 mt-9">
-              {
-                pokemon.abilities.map(a => (
-                  <div className="bg-gray-700 w-full rounded-lg flex justify-between p-3 capitalize" key={a.ability.name}>
-                    <p>{a.ability.name}</p>
-                    <span className={`${a.is_hidden ?'type-normal' : 'type-ghost'} px-4 rounded-full`}>{a.is_hidden ? 'Hidden' : 'Standard'}</span>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
+					<div className="w-full max-w-4xl  p-5 bg-gray-900 rounded-xl mt-7 ">
+						<h3 className="font-semibold text-2xl">Abilities</h3>
+						<div className="flex flex-col items-center gap-5 mt-9">
+							{pokemon.abilities.map((a) => (
+								<div
+									className="bg-gray-700 w-full rounded-lg flex justify-between p-3 capitalize"
+									key={a.ability.name}
+								>
+									<p>{a.ability.name}</p>
+									<span
+										className={`${a.is_hidden ? "type-normal" : "type-ghost"} px-4 rounded-full`}
+									>
+										{a.is_hidden ? "Hidden" : "Standard"}
+									</span>
+								</div>
+							))}
+						</div>
+					</div>
 
-
-          <div className="w-full max-w-4xl  p-5 bg-gray-900 rounded-xl mt-7 mb-9 ">
-            <h3 className="font-semibold text-2xl">Types</h3>
-            <div className="flex items-center gap-5 mt-5 ml-5">
-              {
-                pokemon.types.map(t => (
-                  
-                    <span key={t.type.name}  className={` px-5  rounded-full border-2 type-${t.type.name} border-blue-800 bg-blue-300 text-blue-800 capitalize`}>{t.type.name}</span>
-                    
-            
-                ))
-              }
-            </div>
-          </div>
+					<div className="w-full max-w-4xl  p-5 bg-gray-900 rounded-xl mt-7 mb-9 ">
+						<h3 className="font-semibold text-2xl">Types</h3>
+						<div className="flex items-center gap-5 mt-5 ml-5">
+							{pokemon.types.map((t) => (
+								<span
+									key={t.type.name}
+									className={` px-5  rounded-full border-2 type-${t.type.name} border-blue-800 bg-blue-300 text-blue-800 capitalize`}
+								>
+									{t.type.name}
+								</span>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>

@@ -1,10 +1,10 @@
 import { getPokemonDetails, getPokemonList, getPokemonTypes } from "@/lib/api";
-import PokemonCard from "./components/PokemonCard";
+import PokemonCard from "../components/PokemonCard";
 import { Pokemon } from "@/types";
-import Pagination from "./components/Pagination";
-import SearchBar from "./components/SearchBar";
-import TypeFilter from "./components/TypeFilter";
-import EmptyState from "./components/EmptyState";
+import Pagination from "../features/Pagination";
+import SearchBar from "../features/SearchBar";
+import TypeFilter from "../features/TypeFilter";
+import EmptyState from "../components/EmptyState";
 
 interface HomeProp {
 	searchParams: Promise<{ page?: string; search?: string; type?: string }>;
@@ -49,7 +49,7 @@ export default async function Home({ searchParams }: HomeProp) {
 							image={p.sprites.other["official-artwork"].front_default}
 							types={p.types}
 							baseExperience={p.base_experience}
-							priority={index < 3} 
+							priority={index < 3}
 						/>
 					))}
 				</div>
