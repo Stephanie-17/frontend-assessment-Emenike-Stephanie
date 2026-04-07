@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Setup
+1. Clone the repo: git clone `frontend-assessment-Emenike-Stephanie`
+2. Install: `npm install`
+3. Get PokeAPI (no API key needed)
+4. Run: npm run dev
 
-## Getting Started
+## API Choice
+I used PokéAPI because it's free, requires no API key, and has clean
+paginated endpoints for listing and individual item detail pages.
 
-First, run the development server:
+## Pagination Choice
+I used pagination (not infinite scroll) because it keeps the URL
+stateful, you can share a link to page 3 and it works. Infinite scroll
+would have made URL state harder to manage. Also, it makes it easier for the user to search for Pokemons.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Performance Optimisations
+- next/image on all images with explicit width/height because it prevents CLS
+  (layout jumping as images load)
+- priority prop on above-the-fold images because it tells the browser to load
+  these first, improving LCP
+- force-cache on the listing fetch — Pokémon data doesn't change, so
+  caching it avoids unnecessary API calls
+- next/font for the font — loads the font at build time instead of
+  runtime, prevents a flash of unstyled text
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture Decisions
+- All fetch calls live in lib/api.ts — components never call fetch
+  directly. This makes it easy to swap the API later and keeps
+  components clean.
+- Shared types are in types/index.ts so I'm not repeating the same
+  type shapes across files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Trade-offs & Known Limitations
+- I chose client-side filtering over API-level filtering for simplicity.
+  With more time I'd move this to the API query to reduce data transfer.
+- Tests cover 2 components. With more time I'd add tests for the search
+  logic and the pagination component.
+- I didn't attempt Cloudflare Workers deployment — I prioritised getting
+  a stable Vercel deployment and a complete feature set.
+- PokeAPI doesn't have a search endpoint, because of that, the user can only search through a page at a time, not the entire database. This is another thing I'd want to work on if given more than two hours
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What I'd tackle next (given 2 more hours)
+I'd improve the search to use API-level filtering instead of client-side, add the Cloudflare Workers deployment with proper cache headers as well as optimising the search to go through the entire database. 
