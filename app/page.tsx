@@ -1,4 +1,4 @@
-import { getPokemonDetails, getPokemonList } from "@/lib/api";
+import { getPokemonDetails, getPokemonList, getPokemonTypes } from "@/lib/api";
 import PokemonCard from "./components/PokemonCard";
 import { Pokemon } from "@/types";
 import Pagination from "./components/Pagination";
@@ -6,25 +6,31 @@ import SearchBar from "./components/SearchBar";
 import TypeFilter from "./components/TypeFilter";
 
 interface HomeProp {
-  searchParams: Promise<{page?: string, search?: string}>
+  searchParams: Promise<{page?: string, search?: string, type?: string}>
   
 }
 export default async function Home({searchParams,}:HomeProp) {
-  const {page, search} = await searchParams
+  const {page, search, type} = await searchParams
    const currentPage = Number(page) || 1
    const limit = 21;
   const pokeData = await getPokemonList(currentPage,limit)
+   const types =  await getPokemonTypes();
   const detailedPokemon = await Promise.all(
     pokeData.results.map((p)=> {const id = p.url.split('/').filter(Boolean).pop();  return getPokemonDetails(Number(id))})
   )
 
-  const filteredPokemon = search ? detailedPokemon.filter(p =>  p.name.toLowerCase().includes(search.toLowerCase())) : detailedPokemon
+  const filteredPokemon = detailedPokemon
+  .filter(p => search ? p.name.toLowerCase().includes(search.toLowerCase()) : true)
+  .filter(p => type ? p.types.some(t => t.type.name === type) : true)
   
   const totalPages = Math.ceil(pokeData.count /limit)
   
   return (
    <main className="w-full  flex flex-col justify-center items-center">
-    <SearchBar />
+    <div className="w-full flex items-center mb-9 gap-5 justify-center">
+       <SearchBar />
+    <TypeFilter types={types}/>
+    </div>
    
     
     {filteredPokemon.length === 0 ? (

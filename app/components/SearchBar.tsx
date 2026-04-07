@@ -28,7 +28,7 @@ const SearchBar =  () => {
 	
 	return (
 		<input
-     className="w-1/2 border-white/50 p-2 mb-9 border-2 rounded-xl"
+     className="w-1/2 border-white/50 p-2  border-2 rounded-xl"
 			value={value}
 			onChange={(e) => setValue(e.target.value)}
 			type="search"
