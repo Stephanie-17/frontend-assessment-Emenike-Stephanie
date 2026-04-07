@@ -105,7 +105,7 @@ const PokemonDetails = async ({ params }: PokemonDetailsProps) => {
               {
                 pokemon.types.map(t => (
                   
-                    <span key={t.type.name}  className=" px-5  rounded-full border-2 type-ice capitalize">{t.type.name}</span>
+                    <span key={t.type.name}  className={` px-5  rounded-full border-2 type-${t.type.name} border-blue-800 bg-blue-300 text-blue-800 capitalize`}>{t.type.name}</span>
                     
             
                 ))
