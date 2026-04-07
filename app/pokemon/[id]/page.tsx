@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 import BreadcrumbNav from "@/app/components/BreadcrumbNav";
 import { getPokemonDetails } from "@/lib/api";
 import React from "react";
-import Image from "next/image";
 import { Pokemon } from "@/types";
+import PokemonDetailsImg from "@/app/components/PokemonDetailsImg";
 
 interface PokemonDetailsProps {
 	params: Promise<{ id: string }>;
@@ -45,7 +45,8 @@ const PokemonDetails = async ({ params }: PokemonDetailsProps) => {
 
 				<div className="mt-9 flex flex-col items-center w-full">
 					<div className="w-full max-w-4xl bg-gray-900 border-white/50 border-2 rounded-xl flex flex-col md:flex-row items-center gap-10 p-5">
-						<Image src={image} alt={pokemon.name} width={300} height={250} />
+          <PokemonDetailsImg image={image} name={pokemon.name} />
+						
 
 						<div className="flex flex-col items-center md:items-start">
 							<p className="text-white/50 text-sm">#{formattedId}</p>
