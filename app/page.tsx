@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: HomeProp) {
 				<EmptyState />
 			) : (
 				<div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-					{filteredPokemon.map((p: Pokemon) => (
+					{filteredPokemon.map((p: Pokemon, index) => (
 						<PokemonCard
 							key={p.id}
 							id={p.id}
@@ -49,6 +49,7 @@ export default async function Home({ searchParams }: HomeProp) {
 							image={p.sprites.other["official-artwork"].front_default}
 							types={p.types}
 							baseExperience={p.base_experience}
+							priority={index < 3} 
 						/>
 					))}
 				</div>
