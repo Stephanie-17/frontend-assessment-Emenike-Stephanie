@@ -24,7 +24,7 @@ const PokemonCard = ({
 	const primaryType = types[0].type.name;
 	return (
 		<Link href={`/pokemon/${id}`}>
-			<div className="bg-primary border-white/50 border-2 rounded-xl flex flex-col justify-center">
+			<div className="bg-black border-white border-2 rounded-xl flex flex-col justify-center">
 				<div className="p-10 w-full flex justify-center">
 					{imgError || !image ? (
 						<div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
@@ -42,7 +42,7 @@ const PokemonCard = ({
 					)}
 				</div>
 
-				<div className="w-full bg-white/10 p-3">
+				<div className="w-full bg-gray-900 p-3 rounded-b-xl">
 					<p className="text-gray-400 text-xs mb-2">#{formattedId}</p>
 					<p className="font-bold text-lg capitalize tracking-widest mb-3">{name}</p>
 					<div className="flex justify-between items-center">
